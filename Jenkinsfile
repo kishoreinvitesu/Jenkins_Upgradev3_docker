@@ -12,14 +12,9 @@ pipeline {
                         echo 'Building Sample Maven Project'
                   }
             }
-            stage('Deploy') {
+            stage('Dockerfile'){
                   steps {
-                        echo "Deploying in Staging Area"
-                  }
-            }
-            stage('Deploy Production') {
-                  steps {
-                        echo "Deploying in Production Area"
+                        sh "docker build . -t tomcatsampleapp:${env.BUILD_ID}" 
                   }
             }
       }
