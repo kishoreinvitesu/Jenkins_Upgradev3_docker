@@ -11,11 +11,17 @@ pipeline {
                   steps {
                         echo 'Building Sample Maven Project'
                   }
+            stage('Build'){
+                  steps {
+                        sh pwd
+                  }
+            }      
             }
             stage('Dockerfile'){
                   steps {
                         sh "docker build . -t tomcatsampleapp:${env.BUILD_ID}" 
                   }
             }
+            
       }
 }
